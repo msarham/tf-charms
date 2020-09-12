@@ -4,6 +4,11 @@
 
 apt-get install -y python-pip
 
++# translate juju proxy vars into traditional proxy vars
++[ -n $JUJU_CHARM_HTTP_PROXY ]  && export http_proxy=$JUJU_CHARM_HTTP_PROXY
++[ -n $JUJU_CHARM_HTTPS_PROXY ] && export https_proxy=$JUJU_CHARM_HTTPS_PROXY
++[ -n $JUJU_CHARM_NO_PROXY ]    && export no_proxy=$JUJU_CHARM_NO_PROXY
+
 rm -rf /tmp/venv
 virtualenv /tmp/venv
 source /tmp/venv/bin/activate
